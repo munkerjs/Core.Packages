@@ -21,3 +21,4 @@ public class Paginate<T>
     public bool HasPrevious => Index > 0; // önceki sayfa var mı?
     public bool HasNext => Index + 1 < Pages; // sonraki sayfa var mı?
 }
+

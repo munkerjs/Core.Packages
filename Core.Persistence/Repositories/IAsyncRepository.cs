@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Core.Persistence.Repositories;
 
-public interface IAsyncRepository <TEntity, TEntityId> : IQueryable<TEntity> where TEntity : Entity<TEntityId>
+public interface IAsyncRepository <TEntity, TEntityId> : IQuery<TEntity> where TEntity : Entity<TEntityId>
 {
     Task<TEntity?> GetAsync(
         Expression<Func<TEntity, bool>> predicate, 
@@ -51,13 +51,13 @@ public interface IAsyncRepository <TEntity, TEntityId> : IQueryable<TEntity> whe
 
     Task<TEntity> AddAsync(TEntity entity);
 
-    Task<ICollection<TEntity>> AddRangeAsync(ICollection<TEntity> entity);
+    Task<ICollection<TEntity>> AddRangeAsync(ICollection<TEntity> entities);
 
     Task<TEntity> UpdateAsync(TEntity entity);
 
-    Task<ICollection<TEntity>> UpdateRangeAsync(ICollection<TEntity> entity);
+    Task<ICollection<TEntity>> UpdateRangeAsync(ICollection<TEntity> entities);
     
     Task<TEntity> DeleteAsync(TEntity entity, bool permanent = false);
 
-    Task<ICollection<TEntity>> DeleteRangeAsync(ICollection<TEntity> entity, bool permanent = false);
+    Task<ICollection<TEntity>> DeleteRangeAsync(ICollection<TEntity> entities, bool permanent = false);
 }
